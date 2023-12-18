@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parts</title>
+        <meta charset="utf-8" />
+        <link rel="icon" href="favicon.png">
+    </head>
+    <body>
+        <p>Parts</p>
+
+        <input type="text" id="parts_search" onkeyup="filter_parts()" placeholder="Search...">
+
+        <table id="parts_table">
+            <tr>
+                <th>Part</th>
+                <th>Footprint</th>
+                <th>Storage Location</th>
+                <th>Tolerance</th>
+                <th>Rating</th>
+                <th>Project(s)</th>
+                <th>Digikey Part Number</th>
+                <th>Date Added</th>
+            </tr>
+        </table>
+
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script src="https://accounts.google.com/gsi/client"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+        <script src="sheets.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
