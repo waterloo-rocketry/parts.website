@@ -4,29 +4,34 @@
         <title>Parts</title>
         <meta charset="utf-8" />
         <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <p>Parts</p>
+        <div id="offline_warning">
+            <p><b>Warning:</b> You are offline.</p>
+        </div>
 
-        <input type="text" id="parts_search" onkeyup="filter_parts()" placeholder="Search...">
+        <div id="container">
+            <input type="text" id="parts_search" onkeyup="filter_parts()" placeholder="Search...">
 
-        <table id="parts_table">
-            <tr>
-                <th>Part</th>
-                <th>Footprint</th>
-                <th>Storage Location</th>
-                <th>Tolerance</th>
-                <th>Rating</th>
-                <th>Project(s)</th>
-                <th>Digikey Part Number</th>
-                <th>Date Added</th>
-            </tr>
-        </table>
+            <table id="parts_table">
+                <tr>
+                    <th onclick="sort_parts('value')">Part</th>
+                    <th onclick="sort_parts('location')">Storage Location</th>
+                    <th onclick="sort_parts('description')">Description</th>
+                    <th onclick="sort_parts('footprint')">Footprint</th>
+                    <th onclick="sort_parts('tolerance')">Tolerance</th>
+                    <th onclick="sort_parts('rating')">Rating</th>
+                </tr>
+            </table>
+        </div>
 
         <script src="https://apis.google.com/js/api.js"></script>
         <script src="https://accounts.google.com/gsi/client"></script>
-        <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+        <script src="lib/fuse.min.js"></script>
+        <script src="parts.js"></script>
         <script src="sheets.js"></script>
+        <script src="table.js"></script>
         <script src="main.js"></script>
     </body>
 </html>
