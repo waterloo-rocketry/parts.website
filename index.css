@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+}
+
+#offline_warning {
+    display: none;
+    background-color: #fce8e6;
+    color: rgb(165, 14, 14);
+    margin: 0;
+    padding: 1em;
+}
+
+#offline_warning p {
+    margin: 0;
+}
+
+#container {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 3em;
+}
+
+#parts_search {
+    display: block;
+    width: 100%;
+    font-size: medium;
+    box-sizing: border-box;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    height: 2em;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+#parts_table {
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 2em;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* parts table column widths */
+th:nth-of-type(1) {width: 20%}
+th:nth-of-type(2) {width: 15%}
+th:nth-of-type(3) {width: 30%}
