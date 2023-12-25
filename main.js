@@ -15,8 +15,11 @@ let parts; // Array of all the part objects we loaded
 let filtered; // Subset of parts that matches the user's search
 let fuse; // index to quickly fuzzy search over parts
 
-sheets_init()
-.then(sheets_fetch)
+// Use promise.race as a timeout for fetching data from google sheets.
+Promise.race([
+    sheets_init().then(sheets_fetch),
+    new Promise((_, reject) => setTimeout(() => reject(), 1500))
+])
 .catch(err => {
     // If something went wrong fetching data from google,
     // display a warning and load from localStorage instead
