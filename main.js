@@ -65,7 +65,7 @@ function filter_parts() {
             // Then find all of the parts with a value within 10% of the search
             let close = parts.filter(part => Math.abs(parsed[0] - part.value) <= 0.1 * parsed[0]);
             // Sorted by error
-            close.sort((a, b) => Math.abs(parsed[0] - a) - Math.abs(parts[0] - b));
+            close.sort((a, b) => Math.abs(parsed[0] - a.value) - Math.abs(parsed[0] - b.value));
             // And display those first
             filtered = [...close, ...filtered.filter(part => !close.includes(part))];
         }
