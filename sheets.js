@@ -2,7 +2,7 @@ const API_KEY = 'AIzaSyDMNWmtO7bsU7RcNmcJD91IVHJiCbqTAQw';
 const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 const SHEET_ID = '1NLXdFrLtgda5LWzMhjwzs9EuQLDXqR4jcgIqeNbPJr8';
 
-function sheets_init() {
+function sheetsInit() {
     // Here we load the gapi 'client' module, and then tell it to
     // load the sheets API via the discovery doc URL.
     return new Promise(resolve => {
@@ -40,7 +40,7 @@ function sheets_init() {
 // The columns of the data sheet, in order.
 const DATA_KEYS = ["value", "location", "description", "footprint", "tolerance", "rating", "projects", "digikey", "date"];
 
-function sheets_fetch() {
+function sheetsFetch() {
     // Load the contents of the sheet as a 2d array
     return gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: SHEET_ID,
@@ -55,13 +55,13 @@ function sheets_fetch() {
 
             // If we can parse the value numerically, do so and set the unit field
             entry.unit = '';
-            if ((parsed = parse_value(entry.value))) {
+            if ((parsed = parseValue(entry.value))) {
                 entry.value = parsed[0];
                 entry.unit = parsed[1];
             }
 
             // Parse the tolerance into a number
-            entry.tolerance = parse_tolerance(entry.tolerance);
+            entry.tolerance = parseTolerance(entry.tolerance);
 
             return entry;
         });

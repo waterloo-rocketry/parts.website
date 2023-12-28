@@ -3,7 +3,7 @@ const PREFIXES  = {"p": 1E-12, "n": 1E-9, "µ": 1E-6, "u": 1E-6, "m": 1E-3, "R":
 
 // Part a value of the form 10k, 1R5, 300 pF, 10R, etc
 // into an absolute numeric value and a unit.
-function parse_value(str) {
+function parseValue(str) {
     let unit = "R";
     // Strip a trailing unit if one exists, otherwise default to ohms
     for (const u of UNITS) {
@@ -39,7 +39,7 @@ function parse_value(str) {
 
 const DISPLAY_PREFIXES = ["M", "k", "R", "m", "u", "n", "p"];
 const OMIT_R = ["M", "k"];
-function format_value(part) {
+function formatValue(part) {
     if (part.unit == '') { return part.value; } // No unit means this is just a part number
     if (part.value == 0) { return part.value + part.unit; }
     // Find the largest prefix where there is no decimal
@@ -62,12 +62,12 @@ function format_value(part) {
     return res;
 }
 
-function parse_tolerance(str) {
+function parseTolerance(str) {
     // Just strip a % sign and make it a number
     return parseFloat(str.replace("%", "")) ?? '';
 }
 
-function format_tolerance(part) {
+function formatTolerance(part) {
     if (!part.tolerance) return '';
     return part.tolerance + "%";
 }
