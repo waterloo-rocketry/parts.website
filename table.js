@@ -5,18 +5,18 @@ function td(content) {
     return res;
 }
 
-function build_table(data) {
-    let table = document.getElementById("parts_table");
+function buildTable(data) {
+    let table = document.getElementById("parts-table");
     // Just replace the entire table with the given data
     table.replaceChildren(table.children[0],
         ...data.map(part => {
             let tr = document.createElement("tr");
             tr.replaceChildren(
-                td(format_value(part)),
+                td(formatValue(part)),
                 td(part.location),
                 td(part.description),
                 td(part.footprint),
-                td(format_tolerance(part)),
+                td(formatTolerance(part)),
                 td(part.rating),
             );
             return tr;

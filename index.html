@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Parts</title>
         <meta charset="utf-8" />
@@ -7,21 +7,21 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div id="offline_warning">
-            <p><b>Warning:</b> You are offline.</p>
+        <div id="offline-warning">
+            <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
         </div>
 
         <div id="container">
-            <input type="text" id="parts_search" onkeyup="filter_parts()" placeholder="Search...">
+            <input type="text" id="parts-search" onkeyup="filterParts()" placeholder="Search...">
 
-            <table id="parts_table">
+            <table id="parts-table">
                 <tr>
-                    <th onclick="sort_parts('value')">Part</th>
-                    <th onclick="sort_parts('location')">Storage Location</th>
-                    <th onclick="sort_parts('description')">Description</th>
-                    <th onclick="sort_parts('footprint')">Footprint</th>
-                    <th onclick="sort_parts('tolerance')">Tolerance</th>
-                    <th onclick="sort_parts('rating')">Rating</th>
+                    <th onclick="sortParts('value')">Part</th>
+                    <th onclick="sortParts('location')">Storage Location</th>
+                    <th onclick="sortParts('description')">Description</th>
+                    <th onclick="sortParts('footprint')">Footprint</th>
+                    <th onclick="sortParts('tolerance')">Tolerance</th>
+                    <th onclick="sortParts('rating')">Rating</th>
                 </tr>
             </table>
         </div>
