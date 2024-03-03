@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Parts</title>
+        <meta charset="utf-8" />
+        <link rel="icon" href="favicon.png">
+        <link rel="stylesheet" href="general.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class = "banner">
+            <ul class="pull-left nav--left" style="margin-left: -60px;">
+                <a href="index.html">
+                    <img class = banner__logo src="image/banner_logo.png">
+                </a>
+            </ul>
+            <div class = "pull-right">
+                <ul class="nav--right">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="submit.html">SUBMIT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                </ul>
+                <div class="nav--button">
+                    <a href="#nav--dropdown" data-toggle="collapse">
+                        <i class="fa fa-bars" style="font-size:40px;color: #999999; margin-left: 5px; margin-right: 5px;"></i>
+                    </a>
+                </div>
+            </div>
+            <div id="nav--dropdown" class="collapse" style="margin-top: 100px;">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="submit.html">SUBMIT</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class = "content">
+            <div id="offline-warning">
+                <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
+            </div>
+            <div class="description__submit">
+                <h1 class="heading__about">
+                    SUBMIT
+                </h1>
+                <p>
+                    Use this form to submit a new part to the website.<br>
+                    <br>
+                    Otherwise, you can directly edit the Google Sheet where the components are documented.<br>
+                    <br>
+                    <a href="https://docs.google.com/spreadsheets/d/1NLXdFrLtgda5LWzMhjwzs9EuQLDXqR4jcgIqeNbPJr8/edit#gid=0">
+                        <img src="image/icon_google_sheets.png" style="width: 24px; height: auto;">
+                    </a>
+                    
+                </p>
+                <hr>
+                <form>
+                    <label for="part_n">Part Number / Value: </label>
+                    <br>
+                    <input type="text" id="part_n" name="part_n" required>
+                    <br>
+                    <label for="location">Storage Location: </label>
+                    <br>
+                    <input type="text" id="location" name="location" required>
+                    <br>
+                    <label for="description">Description / Keywords: </label>
+                    <br>
+                    <textarea name="description" rows="5" cols="50"></textarea>
+                    <br>
+                    <label for="footprint">Footprint: </label>
+                    <br>
+                    <input type="text" id="footprint" name="footprint" required>
+                    <br>
+                    <label for="tolerence">Tolerence: </label>
+                    <br>
+                    <input type="text" id="tolerence" name="tolerence">
+                    <br>
+                    <label for="rating_a">Rating(A): </label>
+                    <br>
+                    <input type="text" id="rating_a" name="rating_a">
+                    <br>
+                    <label for="rating_v">Rating(V): </label>
+                    <br>
+                    <input type="text" id="rating_v" name="rating_v">
+                    <br>
+                    <label for="rating_w">Rating(W): </label>
+                    <br>
+                    <input type="text" id="rating_w" name="rating_w">
+                    <br><br>
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </form>
+            </div>
+            <div class="footer col-md-12">
+                <div class="pull-left footer__return">
+                    <a href="https://www.waterloorocketry.com/">
+                    <img src="image/banner_logo_main.png">
+                    </a>
+                    <br><p>RETURN TO MAIN SITE</p>
+                </div>
+                <div class="footer__container">
+                    <a href="https://www.facebook.com/WaterlooRocketry/">
+                    <img src="image/icon_fb.png">
+                    </a>
+                    <a href="mailto:contact@waterloorocketry.com">
+                    <img src="image/icon_mail.png">
+                    </a>
+                    <a href="https://www.flickr.com/photos/64315121@N05/">
+                    <img src="image/icon_flickr.png">
+                    </a>
+                    <a href="https://www.youtube.com/user/uwrocketry">
+                    <img src="image/icon_youtube.png">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

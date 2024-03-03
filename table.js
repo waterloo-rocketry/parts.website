@@ -6,20 +6,37 @@ function td(content) {
 }
 
 function buildTable(data) {
+    var w = window.innerWidth;
     let table = document.getElementById("parts-table");
     // Just replace the entire table with the given data
-    table.replaceChildren(table.children[0],
-        ...data.map(part => {
-            let tr = document.createElement("tr");
-            tr.replaceChildren(
-                td(formatValue(part)),
-                td(part.location),
-                td(part.description),
-                td(part.footprint),
-                td(formatTolerance(part)),
-                td(part.rating),
-            );
-            return tr;
-        })
-    );
+    if (w > 1000) {
+        table.replaceChildren(table.children[0],
+            ...data.map(part => {
+                let tr = document.createElement("tr");
+                tr.replaceChildren(
+                    td(formatValue(part)),
+                    td(part.location),
+                    td(part.description),
+                    td(part.footprint),
+                    td(formatTolerance(part)),
+                    td(part.ratingA),
+                    td(part.ratingV),
+                    td(part.ratingW),
+                );
+                return tr;
+            })
+        );
+    } else {
+        table.replaceChildren(table.children[0],
+            ...data.map(part => {
+                let tr = document.createElement("tr");
+                tr.replaceChildren(
+                    td(formatValue(part)),
+                    td(part.location),
+                    td(part.description),
+                );
+                return tr;
+            })
+        );
+    }
 }

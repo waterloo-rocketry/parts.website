@@ -42,7 +42,9 @@ Promise.race([
         {name: 'description' },
         {name: 'footprint' },
         {name: 'tolerance', getFn: (part) => formatTolerance(part)},
-        {name: 'rating' },
+        {name: 'ratingA', getFn: (part) => formatValue(part)},
+        {name: 'ratingV' },
+        {name: 'ratingW' },
         {name: 'projects' },
         {name: 'digikey' },
     ], ignoreLocation: true});
@@ -79,12 +81,20 @@ function filterParts() {
     buildTable(filtered);
 }
 
+// extract numerical fraction from string. 
+function extractNumberFromString(str) {
+    const match = str.match(/\d+(\.\d+)?(\/\d+)?/);
+    return match ? eval(match[0]) : null;
+}
+
+
 let sorting_key = ''; // The key we are currently sorting by
 let sorting_reversed = -1; // The current sort direction
 // Called on click of one of the headers
 function sortParts(key) {
     // Figure out the correct sort direction so that it reverses
     // if already sorting by the clicked header.
+
     if (sorting_key == key) {
         sorting_reversed *= -1;
     } else {
@@ -106,7 +116,35 @@ function sortParts(key) {
         if (a > b) return -sorting_reversed;
         return 0;
     }
-    filtered.sort(compare);
+    // specific comparisin function for rating.
+    function compareRatings(a, b) {
+        a = a[key];
+        b = b[key];
+        // extract numerical value from string. 
+        numberA = extractNumberFromString(a);
+        numberB = extractNumberFromString(b);
+        // push all empty values to bottom.
+        if (a === "") {
+            return sorting_reversed;
+        }
+        if (numberA < numberB) {
+            return sorting_reversed;
+        }
+        if (numberA > numberB) {
+            return -sorting_reversed;
+        }
+        return 0; 
+    }
+
+    // Use different compare function based on column.
+    if (key === "ratingA" || key === "ratingV" || key === "ratingW") {
+        filtered.sort(compareRatings);
+    } else {
+        filtered.sort(compare);
+    }
+    
+    
+    
 
     // Update arrows on the table
     for (th of document.querySelectorAll("#parts-table tr th")) {
