@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Parts</title>
         <meta charset="utf-8" />
         <link rel="icon" href="favicon.png">
@@ -11,6 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
+
         <div class = "banner">
             <ul class="pull-left nav--left" style="margin-left: -60px;">
                 <a href="index.html">
@@ -41,10 +43,8 @@
             <div id="offline-warning">
                 <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
             </div>
-
             <div id="container">
                 <input type="text" id="parts-search" onkeyup="filterParts()" placeholder="Search...">
-
                 <table id="parts-table">
                     <tr>
                         <th id="sortable" onclick="sortParts('value')">Part</th>
@@ -58,7 +58,12 @@
                     </tr>
                 </table>
             </div>
-
+            <script>
+                var x = window.matchMedia("(max-width: 1000px)")
+                x.addEventListener("change", function() {
+                sortParts();
+                });
+            </script>
             <script src="https://apis.google.com/js/api.js"></script>
             <script src="https://accounts.google.com/gsi/client"></script>
             <script src="lib/fuse.min.js"></script>
@@ -66,7 +71,7 @@
             <script src="sheets.js"></script>
             <script src="table.js"></script>
             <script src="main.js"></script>
-            <div class="footer col-md-12">
+            <div class="footer">
                 <div class="pull-left footer__return">
                     <a href="https://www.waterloorocketry.com/">
                     <img src="image/banner_logo_main.png">
@@ -91,4 +96,3 @@
         </div>
     </body>
 </html>
-
