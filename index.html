@@ -43,18 +43,23 @@
             <div id="offline-warning">
                 <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
             </div>
+            <div id="section_select">
+                <img id="section1" src="image/selected.png" onclick="changeSection(1);sortParts();">
+                <img id="section2" src="image/selected.png" onclick="changeSection(2);sortParts()">
+                <img id="section3" src="image/selected.png" onclick="changeSection(3);sortParts()"> 
+            </div>
             <div id="container">
                 <input type="text" id="parts-search" onkeyup="filterParts()" placeholder="Search...">
                 <table id="parts-table">
                     <tr>
-                        <th id="sortable" onclick="sortParts('value')">Part</th>
-                        <th id="sortable" onclick="sortParts('location')">Storage Location</th>
-                        <th onclick="sortParts('description')">Description</th>
-                        <th id="sortable" onclick="sortParts('footprint')">Footprint</th>
-                        <th id="sortable" onclick="sortParts('tolerance')">Tolerance</th>
-                        <th id="sortable" onclick="sortParts('ratingA')">Rating(A)</th>
-                        <th id="sortable" onclick="sortParts('ratingV')">Rating(V)</th>
-                        <th id="sortable" onclick="sortParts('ratingW')">Rating(W)</th>
+                        <th id="section1name">Part<div id="sortable" onclick="sortParts('footprint')"></div></th>
+                        <th id="section1a">Storage Location<div id="sortable" onclick="sortParts('location')"></div></th>
+                        <th id="section1b">Description</th>
+                        <th id="section2a">Footprint<div id="sortable" id="" onclick="sortParts('footprint')"></div></th>
+                        <th id="section2b">Tolerance<div id="sortable" onclick="sortParts('tolerance')"></div></th>
+                        <th id="section3a">Rating(A)<div id="sortable" onclick="sortParts('ratingA')"></div></th>
+                        <th id="section3b">Rating(V)<div id="sortable" onclick="sortParts('ratingV')"></div></th>
+                        <th id="section3c">Rating(W)<div id="sortable" onclick="sortParts('ratingW')"></div></th>
                     </tr>
                 </table>
             </div>
@@ -62,7 +67,7 @@
                 var x = window.matchMedia("(max-width: 1000px)")
                 x.addEventListener("change", function() {
                 sortParts();
-                });
+                })
             </script>
             <script src="https://apis.google.com/js/api.js"></script>
             <script src="https://accounts.google.com/gsi/client"></script>

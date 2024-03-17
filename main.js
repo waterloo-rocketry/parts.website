@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
         }
     });
 }
-
+let section_init = 1;
 let parts; // Array of all the part objects we loaded
 let filtered; // Subset of parts that matches the user's search
 let fuse; // index to quickly fuzzy search over parts
@@ -50,7 +50,7 @@ Promise.race([
     ], ignoreLocation: true});
 
     // Show the table with all the parts
-    buildTable(parts);
+    buildTable(parts, section_init);
 });
 
 // Called on keyup in the search box
@@ -78,7 +78,7 @@ function filterParts() {
         th.className = "";
     }
 
-    buildTable(filtered);
+    buildTable(filtered, section_init);
 }
 
 // extract numerical fraction from string. 
@@ -152,5 +152,10 @@ function sortParts(key) {
     }
     event.target.className = sorting_reversed == 1 ? "headerSortUp" : "headerSortDown";
 
-    buildTable(filtered);
+    buildTable(filtered, section_init);
+}
+
+function changeSection(section) {
+    section_init = section;
+    buildTable(parts, section_init);
 }
