@@ -38,13 +38,13 @@ function sheetsInit() {
 
 
 // The columns of the data sheet, in order.
-const DATA_KEYS = ["value", "location", "description", "footprint", "tolerance", "rating", "projects", "digikey", "date"];
+const DATA_KEYS = ["value", "location", "description", "footprint", "tolerance", "ratingA", "ratingV", "ratingW", "projects", "digikey", "date"];
 
 function sheetsFetch() {
     // Load the contents of the sheet as a 2d array
     return gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: SHEET_ID,
-        range: 'Sheet1',
+        range: 'A:H',
     }).then(response => {
         // Slice off the first row (column names);
         let data = response.result.values.slice(1);
