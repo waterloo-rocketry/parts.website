@@ -113,7 +113,7 @@ form {
 	text-align: center;
 	padding-top: 2.3rem;
 	background: #2b2b2b;
-	background-color: rgba(0, 0, 0, 0.90);
+	background-color: rgba(0, 0, 0, 0.85);
 }
 
 .footer__container {
@@ -161,23 +161,25 @@ hr {
     border-style: solid;
     border-color: #2b2b2b;
     border-radius: 5px;
-    border-width: 0.40rem;
+    border-width: 0.30rem;
     width: fit-content;
 }
 
 .nav--button:hover{
     margin-right: 3rem;
     margin-top: 1rem;
-    border-width: 0.40rem;
+    border-width: 0.30rem;
     border-radius: 5px;
     border-color: #bbbbbb;
 }
 
 #nav--dropdown {
-    background-color: rgba(0, 0, 0, 0.433);
+    background-color: #2b2b2b;
+	background-color: rgba(0, 0, 0, 0.85);
 }
 
 #nav--dropdown li{
+    margin-bottom: -2%;
     list-style: none;
     color: #bbbbbb;
     padding: 1rem;
@@ -366,6 +368,9 @@ hr {
 
 @media (min-width: 1000px) {
     .nav--button {
+        display: none;
+    }
+    #nav--dropdown {
         display: none;
     }
     #nav--dropdown {
