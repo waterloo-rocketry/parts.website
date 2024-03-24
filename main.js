@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
         }
     });
 }
-
+let section_init = 1;
 let parts; // Array of all the part objects we loaded
 let filtered; // Subset of parts that matches the user's search
 let fuse; // index to quickly fuzzy search over parts
@@ -42,13 +42,15 @@ Promise.race([
         {name: 'description' },
         {name: 'footprint' },
         {name: 'tolerance', getFn: (part) => formatTolerance(part)},
-        {name: 'rating' },
+        {name: 'ratingA', getFn: (part) => formatValue(part)},
+        {name: 'ratingV' },
+        {name: 'ratingW' },
         {name: 'projects' },
         {name: 'digikey' },
     ], ignoreLocation: true});
 
     // Show the table with all the parts
-    buildTable(parts);
+    buildTable(parts, section_init);
 });
 
 // Called on keyup in the search box
@@ -76,8 +78,18 @@ function filterParts() {
         th.className = "";
     }
 
-    buildTable(filtered);
+    buildTable(filtered, section_init);
 }
+
+// extract numerical fraction from string. 
+function extractNumberFromString(str) {
+    // takes a string and converts into a numerical value
+    // ex. "1.1" -> 1.1
+    //     "2" -> 2
+    const match = str.match(/\d+(\.\d+)?(\/\d+)?/);
+    return match ? eval(match[0]) : null;
+}
+
 
 let sorting_key = ''; // The key we are currently sorting by
 let sorting_reversed = -1; // The current sort direction
@@ -85,6 +97,7 @@ let sorting_reversed = -1; // The current sort direction
 function sortParts(key) {
     // Figure out the correct sort direction so that it reverses
     // if already sorting by the clicked header.
+
     if (sorting_key == key) {
         sorting_reversed *= -1;
     } else {
@@ -106,7 +119,35 @@ function sortParts(key) {
         if (a > b) return -sorting_reversed;
         return 0;
     }
-    filtered.sort(compare);
+    // specific comparisin function for rating.
+    function compareRatings(a, b) {
+        a = a[key];
+        b = b[key];
+        // extract numerical value from string. 
+        numberA = extractNumberFromString(a);
+        numberB = extractNumberFromString(b);
+        // push all empty values to bottom.
+        if (a === "") {
+            return sorting_reversed;
+        }
+        if (numberA < numberB) {
+            return sorting_reversed;
+        }
+        if (numberA > numberB) {
+            return -sorting_reversed;
+        }
+        return 0; 
+    }
+
+    // Use different compare function based on column.
+    if (key === "ratingA" || key === "ratingV" || key === "ratingW") {
+        filtered.sort(compareRatings);
+    } else {
+        filtered.sort(compare);
+    }
+    
+    
+    
 
     // Update arrows on the table
     for (th of document.querySelectorAll("#parts-table tr th")) {
@@ -114,5 +155,11 @@ function sortParts(key) {
     }
     event.target.className = sorting_reversed == 1 ? "headerSortUp" : "headerSortDown";
 
-    buildTable(filtered);
+    buildTable(filtered, section_init);
+}
+
+// Change section variable and reload table
+function changeSection(section) {
+    section_init = section;
+    buildTable(parts, section_init);
 }

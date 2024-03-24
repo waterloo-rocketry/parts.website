@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Parts</title>
+        <meta charset="utf-8" />
+        <link rel="icon" href="favicon.png">
+
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="general.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- APIs -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!--Script to load header and footer -->
+        <script>
+            $(function() {
+               $("#includeHeader").load("header.html");
+            });
+            $(function() {
+               $("#includeFooter").load("footer.html");
+            });
+        </script>
+    </head>
+    <body>
+
+        <!-- Warning for offline users -->
+        <div id="includeHeader"></div>
+        <div class = "content">
+            <div id="offline-warning">
+                <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
+            </div>
+            <div class="description__submit">
+                <h1 class="heading__about">
+                    SUBMIT
+                </h1>
+                <p>
+                    Use this form to submit a new part to the website.<br>
+                    <br>
+                    Otherwise, you can email <a href="mailto:contact@waterloorocketry.com"><i class="fa fa-envelope" aria-hidden="true"></i> contact@waterloorocketry.com</a> 
+                    to access the Google Sheet where the components are documented.<br>
+                    <br>
+                    <img src="image/icon_google_sheets.png" style="width: 24px; height: auto;">
+
+                    
+                </p>
+                <hr>
+                <!-- Submission Form -->
+                <form>
+                    <label for="part_n">Part Number / Value: </label><br>
+                    <input type="text" id="part_n" name="part_n" required>
+                    <br>
+                    <label for="location">Storage Location: </label><br>
+                    <input type="text" id="location" name="location" required>
+                    <br>
+                    <label for="description">Description / Keywords: </label><br>
+                    <textarea name="description" rows="5" cols="50"></textarea>
+                    <br>
+                    <label for="footprint">Footprint: </label><br>
+                    <input type="text" id="footprint" name="footprint" required>
+                    <br>
+                    <label for="tolerence">Tolerence: </label><br>
+                    <input type="text" id="tolerence" name="tolerence">
+                    <br>
+                    <label for="rating_a">Rating(A): </label><br>
+                    <input type="text" id="rating_a" name="rating_a">
+                    <br>
+                    <label for="rating_v">Rating(V): </label><br>
+                    <input type="text" id="rating_v" name="rating_v">
+                    <br>
+                    <label for="rating_w">Rating(W): </label><br>
+                    <input type="text" id="rating_w" name="rating_w">
+                    <br><br>
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </form>
+            </div>
+        </div>
+        <div id="includeFooter"></div>
+    </body>
+</html>

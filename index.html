@@ -1,37 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Parts</title>
         <meta charset="utf-8" />
         <link rel="icon" href="favicon.png">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="general.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(function() {
+               $("#includeHeader").load("header.html");
+            });
+            $(function() {
+               $("#includeFooter").load("footer.html");
+            });
+        </script>
     </head>
     <body>
-        <div id="offline-warning">
-            <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
+        <div id="includeHeader"></div>
+        <!--Navigation Dropdown -->
+        <div class = "content">
+            <!-- Warning for offline users -->
+            <div id="offline-warning">
+                <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
+            </div>
+            <!-- Selection buttons -->
+            <div id="section_select">
+                <img id="select1" src="image/unselected.png" onclick="changeSection(1);sortParts()">
+                <img id="select2" src="image/unselected.png" onclick="changeSection(2);sortParts()">
+                <img id="select3" src="image/unselected.png" onclick="changeSection(3);sortParts()"> 
+            </div>
+            <!-- Main Table -->
+            <div id="container">
+                <input type="text" id="parts-search" onkeyup="filterParts()" placeholder="Search...">
+                <table id="parts-table">
+                    <tr>
+                        <th id="name">Part<div id="sortable" onclick="sortParts('footprint')"></div></th>
+                        <th name="section1">Storage Location<div id="sortable" onclick="sortParts('location')"></div></th>
+                        <th name="section1">Description</th>
+                        <th name="section2">Footprint<div id="sortable" id="" onclick="sortParts('footprint')"></div></th>
+                        <th name="section2">Tolerance<div id="sortable" onclick="sortParts('tolerance')"></div></th>
+                        <th name="section3">Rating(A)<div id="sortable" onclick="sortParts('ratingA')"></div></th>
+                        <th name="section3">Rating(V)<div id="sortable" onclick="sortParts('ratingV')"></div></th>
+                        <th name="section3">Rating(W)<div id="sortable" onclick="sortParts('ratingW')"></div></th>
+                    </tr>
+                </table>
+            </div>
+            <!-- Script to detect screen dimension change -->
+            <script>
+                var x = window.matchMedia("(max-width: 1000px)")
+                x.addEventListener("change", function() {
+                sortParts();
+                
+                })
+            </script>
+            <script src="https://apis.google.com/js/api.js"></script>
+            <script src="https://accounts.google.com/gsi/client"></script>
+            <script src="lib/fuse.min.js"></script>
+            <script src="parts.js"></script>
+            <script src="sheets.js"></script>
+            <script src="table.js"></script>
+            <script src="main.js"></script>
         </div>
-
-        <div id="container">
-            <input type="text" id="parts-search" onkeyup="filterParts()" placeholder="Search...">
-
-            <table id="parts-table">
-                <tr>
-                    <th onclick="sortParts('value')">Part</th>
-                    <th onclick="sortParts('location')">Storage Location</th>
-                    <th onclick="sortParts('description')">Description</th>
-                    <th onclick="sortParts('footprint')">Footprint</th>
-                    <th onclick="sortParts('tolerance')">Tolerance</th>
-                    <th onclick="sortParts('rating')">Rating</th>
-                </tr>
-            </table>
-        </div>
-
-        <script src="https://apis.google.com/js/api.js"></script>
-        <script src="https://accounts.google.com/gsi/client"></script>
-        <script src="lib/fuse.min.js"></script>
-        <script src="parts.js"></script>
-        <script src="sheets.js"></script>
-        <script src="table.js"></script>
-        <script src="main.js"></script>
+        <div id="includeFooter"></div>
     </body>
 </html>
