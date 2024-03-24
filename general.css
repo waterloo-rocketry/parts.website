@@ -32,6 +32,10 @@ body {
     display: inline;
 }
 
+
+.banner .nav--right {
+    margin-right: 4rem;
+}
 .banner .nav--right ul {
     text-align: center;
     margin-right: 3rem;
@@ -373,7 +377,7 @@ hr {
     #nav--dropdown {
         display: none;
     }
-    #nav--dropdown {
+    #nav--dropdown ul{
         display: none;
     }
 }
