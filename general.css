@@ -6,6 +6,8 @@ body {
     margin: 0;
 }
 
+/* ====================  BANNER STYLING ================== */
+
 .banner {
     top: 0px;
     width: 100vw;
@@ -59,10 +61,17 @@ body {
     text-decoration: none;
 }
 
+/* ====================  BANNER STYLING ================== */
+
+/* ====================  MAIN CONTENT DIV STYLING ================== */
 
 .content{
     margin-top: 12rem;
 }
+
+/* ====================  MAIN CONTENT DIV STYLING ================== */
+
+
 
 .description__about {
     display: block;
@@ -90,6 +99,9 @@ body {
 form {
     margin-bottom: 5rem;
 }
+
+/* ====================  FOOTER STYLING ================== */
+
 .footer {
     float: left;
     display: block;
@@ -130,6 +142,9 @@ form {
 	color: #bbbbbb;
 }
 
+/* ====================  FOOTER STYLING ================== */
+
+/* ====================  HEADER STYLING ================== */
 .heading {
     font-size: 2.5rem;
     margin-top: 2rem;
@@ -172,6 +187,10 @@ hr {
     margin-right: 2rem;
 }
 
+/* ====================  HEADER STYLING ================== */
+
+/* ====================  OFFLINE WARNING STYLING ================== */
+
 #offline-warning {
     position: relative;
     display: none;
@@ -186,6 +205,10 @@ hr {
     text-align: center;
 }
 
+/* ====================  OFFLINE WARNING STYLING ================== */
+
+
+/* ====================  TABLE STYLING ================== */
 #container {
     width: 90%;
     margin: 0 auto;
@@ -270,7 +293,30 @@ hr {
     margin-left: 1rem;
     height: auto;
 }
+.section1 {
+    display: table-cell;
+}
 
+.section2 {
+    display: table-cell;
+}
+.section3 {
+    display: table-cell;
+}
+
+.section1_hide {
+    display: none;
+}
+
+.section2_hide {
+    display: none;
+}
+.section3_hide {
+    display: none;
+}
+/* ====================  TABLE STYLING ================== */
+
+/* ====================  RESIZING  ================== */
 @media (max-width: 1150px) {
     .image__about img {
         float: none;
@@ -326,3 +372,5 @@ hr {
         display: none;
     }
 }
+
+/* ====================  RESIZING  ================== */

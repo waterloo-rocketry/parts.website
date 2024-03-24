@@ -83,6 +83,9 @@ function filterParts() {
 
 // extract numerical fraction from string. 
 function extractNumberFromString(str) {
+    // takes a string and converts into a numerical value
+    // ex. "1.1" -> 1.1
+    //     "2" -> 2
     const match = str.match(/\d+(\.\d+)?(\/\d+)?/);
     return match ? eval(match[0]) : null;
 }
@@ -155,6 +158,7 @@ function sortParts(key) {
     buildTable(filtered, section_init);
 }
 
+// Change section variable and reload table
 function changeSection(section) {
     section_init = section;
     buildTable(parts, section_init);

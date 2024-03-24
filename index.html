@@ -5,68 +5,63 @@
         <title>Parts</title>
         <meta charset="utf-8" />
         <link rel="icon" href="favicon.png">
+
+
+        <!-- Stylesheets -->
         <link rel="stylesheet" href="general.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- APIs -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+        <!--Script to load header and footer -->
+        <script>
+            $(function() {
+               $("#includeHeader").load("header.html");
+            });
+            $(function() {
+               $("#includeFooter").load("footer.html");
+            });
+        </script>
     </head>
     <body>
-
-        <div class = "banner">
-            <ul class="pull-left nav--left" style="margin-left: -60px;">
-                <a href="index.html">
-                    <img class = banner__logo src="image/banner_logo.png">
-                </a>
-            </ul>
-            <div class = "pull-right">
-                <ul class="nav--right">
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="submit.html">SUBMIT</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                </ul>
-                <div class="nav--button">
-                    <a href="#nav--dropdown" data-toggle="collapse">
-                        <i class="fa fa-bars" style="font-size:40px;color: #999999; margin-left: 5px; margin-right: 5px;"></i>
-                    </a>
-                </div>
-            </div>
-            <div id="nav--dropdown" class="collapse" style="margin-top: 100px;">
-                <ul>
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="submit.html">SUBMIT</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                </ul>
-            </div>
-        </div>
+        <div id="includeHeader"></div>
         <div class = "content">
+            <!-- Warning for offline users -->
             <div id="offline-warning">
                 <p><b>Warning:</b> You are offline. Cached data might not be up-to-date.</p>
             </div>
+            <!-- Selection buttons -->
             <div id="section_select">
-                <img id="section1" src="image/selected.png" onclick="changeSection(1);sortParts();">
-                <img id="section2" src="image/selected.png" onclick="changeSection(2);sortParts()">
-                <img id="section3" src="image/selected.png" onclick="changeSection(3);sortParts()"> 
+                <img id="select1" src="image/unselected.png" onclick="changeSection(1);sortParts()">
+                <img id="select2" src="image/unselected.png" onclick="changeSection(2);sortParts()">
+                <img id="select3" src="image/unselected.png" onclick="changeSection(3);sortParts()"> 
             </div>
+            <!-- Main Table -->
             <div id="container">
                 <input type="text" id="parts-search" onkeyup="filterParts()" placeholder="Search...">
                 <table id="parts-table">
                     <tr>
-                        <th id="section1name">Part<div id="sortable" onclick="sortParts('footprint')"></div></th>
-                        <th id="section1a">Storage Location<div id="sortable" onclick="sortParts('location')"></div></th>
-                        <th id="section1b">Description</th>
-                        <th id="section2a">Footprint<div id="sortable" id="" onclick="sortParts('footprint')"></div></th>
-                        <th id="section2b">Tolerance<div id="sortable" onclick="sortParts('tolerance')"></div></th>
-                        <th id="section3a">Rating(A)<div id="sortable" onclick="sortParts('ratingA')"></div></th>
-                        <th id="section3b">Rating(V)<div id="sortable" onclick="sortParts('ratingV')"></div></th>
-                        <th id="section3c">Rating(W)<div id="sortable" onclick="sortParts('ratingW')"></div></th>
+                        <th id="name">Part<div id="sortable" onclick="sortParts('footprint')"></div></th>
+                        <th name="section1">Storage Location<div id="sortable" onclick="sortParts('location')"></div></th>
+                        <th name="section1">Description</th>
+                        <th name="section2">Footprint<div id="sortable" id="" onclick="sortParts('footprint')"></div></th>
+                        <th name="section2">Tolerance<div id="sortable" onclick="sortParts('tolerance')"></div></th>
+                        <th name="section3">Rating(A)<div id="sortable" onclick="sortParts('ratingA')"></div></th>
+                        <th name="section3">Rating(V)<div id="sortable" onclick="sortParts('ratingV')"></div></th>
+                        <th name="section3">Rating(W)<div id="sortable" onclick="sortParts('ratingW')"></div></th>
                     </tr>
                 </table>
             </div>
+            <!-- Script to detect screen dimension change -->
             <script>
                 var x = window.matchMedia("(max-width: 1000px)")
                 x.addEventListener("change", function() {
                 sortParts();
+                
                 })
             </script>
             <script src="https://apis.google.com/js/api.js"></script>
@@ -76,28 +71,7 @@
             <script src="sheets.js"></script>
             <script src="table.js"></script>
             <script src="main.js"></script>
-            <div class="footer">
-                <div class="pull-left footer__return">
-                    <a href="https://www.waterloorocketry.com/">
-                    <img src="image/banner_logo_main.png">
-                    </a>
-                    <br><p>RETURN TO MAIN SITE</p>
-                </div>
-                <div class="footer__container">
-                    <a href="https://www.facebook.com/WaterlooRocketry/">
-                    <img src="image/icon_fb.png">
-                    </a>
-                    <a href="mailto:contact@waterloorocketry.com">
-                    <img src="image/icon_mail.png">
-                    </a>
-                    <a href="https://www.flickr.com/photos/64315121@N05/">
-                    <img src="image/icon_flickr.png">
-                    </a>
-                    <a href="https://www.youtube.com/user/uwrocketry">
-                    <img src="image/icon_youtube.png">
-                    </a>
-                </div>
-            </div>
         </div>
+        <div id="includeFooter"></div>
     </body>
 </html>
